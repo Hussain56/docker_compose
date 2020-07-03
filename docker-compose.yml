@@ -6,6 +6,17 @@ services:
     ports:
       - "80:80"
 
+  supervisor:
+    build: supervisor/.
+
+  nodejs:
+    build: nodejs/.
+
+  nginx:
+    build: nginx/.
+    ports:
+      - "9090:80"
+
   redis-server:
     build: redis/.
     ports:
