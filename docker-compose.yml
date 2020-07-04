@@ -5,6 +5,11 @@ services:
     build: worker/.
     ports:
       - "80:80"
+    ulimits:
+      nproc: 50000
+    nofile:
+      soft: 50000
+      hard: 50000
 
   supervisor:
     build: supervisor/.
