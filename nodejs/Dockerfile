@@ -21,3 +21,5 @@ RUN apt-get update -y && \
 RUN npm install -g yarn npx --force
 
 WORKDIR /var/www/
+
+CMD [ "node" ]
