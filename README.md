@@ -4,4 +4,4 @@ This repository contains **Docker-Compose file** of [appICE](https://www.appice.
 
 ### Installation
 
-1. Install [Docker](https://docs.docker.com/engine/install/).
+  Install [Docker](https://docs.docker.com/engine/install/) and then install [docker-compose](https://docs.docker.com/compose/install/).
