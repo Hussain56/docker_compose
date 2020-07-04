@@ -6,6 +6,21 @@ This repository contains **Docker-Compose file** of [appICE](https://www.appice.
 
   Install [Docker](https://docs.docker.com/engine/install/) and then install [docker-compose](https://docs.docker.com/compose/install/).
   
+## MongoDB Dockerfile
+
+Build a [MongoDB](http://www.mongodb.org) docker image and container using Dockerfile.
+#### Build Image:
+   '''bash
+   docker build -t mongodb mongod/.
+   '''
+Here -t denotes the tags of images and '.' denotes it location Dockerfile
+
+#### RUN container
+   '''bash
+   docker run -d -p 27017:27017 -v <db-dir>:/data/db --name Mongod mongodb
+   '''
+Here -p denotes port mapping between inside container port to our host port, mongodb has running its default port 27017 and -v denotes volume mapping.
+  
 ## Citus
 
 Citus is an extension to Postgres that distributes data and queries in a cluster of multiple machines. As an extension Citus supports new PostgreSQL releases. For more information, see the [Citus Data website](https://www.citusdata.com/).
