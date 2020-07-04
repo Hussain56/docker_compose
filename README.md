@@ -1,1 +1,1 @@
-# Docker_Compose file for to setup all components 
+# Install and Configure appICE Components 
