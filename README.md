@@ -8,4 +8,4 @@ This repository contains **Docker-Compose file** of [appICE](https://www.appice.
   
 ## Citus
 
-Citus is an extension to Postgres that distributes data and queries in a cluster of multiple machines. As an extension Citus supports new PostgreSQL releases. For more information, see the [Citus Data website][CITUS].
+Citus is an extension to Postgres that distributes data and queries in a cluster of multiple machines. As an extension Citus supports new PostgreSQL releases. For more information, see the [Citus Data website](https://www.citusdata.com/).
