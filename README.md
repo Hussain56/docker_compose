@@ -10,15 +10,15 @@ This repository contains **Docker-Compose file** of [appICE](https://www.appice.
 
 Build a [MongoDB](http://www.mongodb.org) docker image and container using Dockerfile.
 #### Build Image:
-   '''bash
+   ```bash
    docker build -t mongodb mongod/.
-   '''
+   ```
 Here -t denotes the tags of images and '.' denotes it location Dockerfile
 
 #### RUN container
-   '''bash
-   docker run -d -p 27017:27017 -v <db-dir>:/data/db --name Mongod mongodb
-   '''
+```bash
+docker run -d -p 27017:27017 -v <db-dir>:/data/db --name Mongod mongodb
+```
 Here -p denotes port mapping between inside container port to our host port, mongodb has running its default port 27017 and -v denotes volume mapping.
   
 ## Citus
