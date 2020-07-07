@@ -20,6 +20,33 @@ Here -t denotes the tags of images and '.' denotes it location Dockerfile
 docker run -d -p 27017:27017 -v <db-dir>:/data/db --name Mongod mongodb
 ```
 Here -p denotes port mapping between inside container port to our host port, mongodb has running its default port 27017 and -v denotes volume mapping.
+
+## Redis
+
+`Dockerfile` to create a [Docker](https://www.docker.com/) container image for [Redis](http://redis.io/).
+
+Redis is an open source, BSD licensed, advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
+
+Build a [Redis](http://redis.io/) docker image and container using Dockerfile.
+#### Build Image:
+   ```bash
+   docker build -t redis-server redis/.
+   ```
+Here -t denotes the tags of images and '.' denotes it location Dockerfile
+
+### Usage
+
+#### Run `redis-server`
+   ```bash
+    docker run -d --name redis -p 6379:6379 redis-server
+   ```
+
+#### Run `redis-server` with persistent data directory. (creates `dump.rdb`)
+  ```bash
+    docker run -d -p 6379:6379 -v <data-dir>:/data --name redis redis-server
+  ```
+  
+
   
 ## Citus
 
