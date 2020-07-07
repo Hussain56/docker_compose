@@ -46,8 +46,22 @@ Here -t denotes the tags of images and '.' denotes it location Dockerfile
     docker run -d -p 6379:6379 -v <data-dir>:/data --name redis redis-server
   ```
   
+##Nodejs
 
-  
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+Build a [Nodejs](https://nodejs.org/en/) docker image and container using Dockerfile.
+#### Build Image:
+   ```bash
+   docker build -t node nodejs/.
+   ```
+### Usage
+
+#### Run `redis-server`
+   ```bash
+    docker run -d --name redis redis-server
+   ```
+
 ## Citus
 
 Citus is an extension to Postgres that distributes data and queries in a cluster of multiple machines. As an extension Citus supports new PostgreSQL releases. For more information, see the [Citus Data website](https://www.citusdata.com/).
