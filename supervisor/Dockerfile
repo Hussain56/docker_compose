@@ -25,6 +25,5 @@ RUN ln -s /lib/x86_64-linux-gnu/security/pam_cracklib.so /lib/security
 # Define working directory.
 WORKDIR /etc/supervisor/conf.d
 
-# ------------------------------------------------------------------------------
 # Start supervisor, define default command.
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
