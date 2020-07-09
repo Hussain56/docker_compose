@@ -32,8 +32,35 @@ EXPOSE 80
 STOPSIGNAL SIGTERM
 
 CMD ["nginx", "-g", "daemon off;"]
-#====================================================================================
 
+#===================================================================================
+
+#Install nodejs
+VOLUME ["/var/www"]
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt install curl -y && \
+    apt-get install gnupg -y && \
+    apt-get install -y gnupg2 -y
+
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    echo "deb https://deb.nodesource.com/node_10.x xenial main" | tee /etc/apt/sources.list.d/node.list
+
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y nodejs && \
+    apt-get install -y vim && \
+    apt-get install -y git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN npm install -g yarn npx --force
+
+WORKDIR /var/www/
+CMD [ "node"]
+
+#=======================================================================================================
 
 # Install Supervisor.
 RUN \
@@ -56,36 +83,6 @@ RUN apt-get update | apt-get upgrade -y
 RUN apt-get install libpam-cracklib -y
 RUN ln -s /lib/x86_64-linux-gnu/security/pam_cracklib.so /lib/security
 
-# ------------------------------------------------------------------------------
 # Start supervisor, define default command.
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
-#==============================================================================
 
-
-#install nodejs
-VOLUME ["/var/www"]
-
-RUN apt-get update -y && \
-   apt-get install -y --no-install-recommends apt-utils && \
-   apt install curl -y && \
-   apt install git -y && \
-   apt install vim -y && \
-   apt-get install gnupg -y && \
-   apt-get install -y gnupg2 -y
-
-RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
-    apt-get update && \
-    apt-get install -y mongodb-org-shell=3.2
-
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo "deb https://deb.nodesource.com/node_10.x xenial main" | tee /etc/apt/sources.list.d/node.list
-
-RUN apt-get update -y && \
-  apt-get upgrade -y && \
-  apt-get install -y nodejs && \
-  apt-get install redis-tools && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN npm install -g yarn npx --force
